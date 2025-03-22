@@ -219,4 +219,7 @@ struct ImGui_ImplVulkanH_Window
     }
 };
 
+void ImGui_ImplVulkan_SwitchToDefaultPipeline(VkCommandBuffer command_buffer);
+void ImGui_ImplVulkan_SwitchToNoColorBlendPipeline(VkCommandBuffer command_buffer);
+
 #endif // #ifndef IMGUI_DISABLE
