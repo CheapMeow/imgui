@@ -2146,23 +2146,9 @@ void ImGui_ImplVulkan_SwitchToDefaultPipeline(VkCommandBuffer command_buffer)
 {
     ImGui_ImplVulkan_Data* bd = ImGui_ImplVulkan_GetBackendData();
 
-    if(!bd)
-    {
-        //std::cerr << "ImGui_ImplVulkan_Data is nullptr!" << std::endl;
-        return;
-    }
-
-    if(command_buffer == VK_NULL_HANDLE)
-    {
-        //std::cerr << "command_buffer is VK_NULL_HANDLE!" << std::endl;
-        return;
-    }
-
-    if(bd->Pipeline == VK_NULL_HANDLE)
-    {
-        //std::cerr << "bd->Pipeline is VK_NULL_HANDLE!" << std::endl;
-        return;
-    }
+    IM_ASSERT(bd != nullptr);
+    IM_ASSERT(command_buffer != VK_NULL_HANDLE);
+    IM_ASSERT(bd->Pipeline != VK_NULL_HANDLE);
 
     vkCmdBindPipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, bd->Pipeline);
 }
@@ -2171,23 +2157,9 @@ void ImGui_ImplVulkan_SwitchToNoColorBlendPipeline(VkCommandBuffer command_buffe
 {
     ImGui_ImplVulkan_Data* bd = ImGui_ImplVulkan_GetBackendData();
 
-    if(!bd)
-    {
-        //std::cerr << "ImGui_ImplVulkan_Data is nullptr!" << std::endl;
-        return;
-    }
-
-    if(command_buffer == VK_NULL_HANDLE)
-    {
-        //std::cerr << "command_buffer is VK_NULL_HANDLE!" << std::endl;
-        return;
-    }
-
-    if(bd->PipelineNoColorBlend == VK_NULL_HANDLE)
-    {
-        //std::cerr << "bd->PipelineNoColorBlend is VK_NULL_HANDLE!" << std::endl;
-        return;
-    }
+    IM_ASSERT(bd != nullptr);
+    IM_ASSERT(command_buffer != VK_NULL_HANDLE);
+    IM_ASSERT(bd->PipelineNoColorBlend != VK_NULL_HANDLE);
 
     vkCmdBindPipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, bd->PipelineNoColorBlend);
 }
